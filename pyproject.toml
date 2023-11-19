@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "hellodove"
+version = "0.1.0"
+description = "语音助手"
+authors = ["一只咕鸽 <xcenweb@qq.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+sounddevice = "^0.4.6"
+sherpa-ncnn = "^2.1.4"
+pyttsx3 = "^2.90"
+selenium = "^4.15.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

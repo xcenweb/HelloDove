@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>语音助手交互页面</title>
+</head>
+<body>
+  <h1>语音助手交互</h1>
+
+  <div id="output"></div>
+
+  <button onclick="startListening()">开始监听</button>
+  <button onclick="stopListening()">停止监听</button>
+
+  <script>
+    // 创建语音识别对象
+    const recognition = new webkitSpeechRecognition();
+
+    // 设置语言为中文
+    recognition.lang = 'zh-CN';
+
+    // 当识别到语音时触发此函数
+    recognition.onresult = function(event) {
+      const transcript = event.results[0][0].transcript;
+      showOutput(transcript);
+    }
+
+    // 开始监听
+    function startListening() {
+      recognition.start();
+    }
+
+    // 停止监听
+    function stopListening() {
+      recognition.stop();
+    }
+
+    // 将识别结果显示在页面上
+    function showOutput(text) {
+      const outputDiv = document.getElementById('output');
+      outputDiv.innerHTML += '<p>' + text + '</p>';
+    }
+  </script>
+</body>
+</html>

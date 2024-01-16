@@ -1,5 +1,4 @@
 # 语音输出
-
 import pyttsx3
 import random
 import pygame
@@ -24,27 +23,29 @@ def wakeup_callback():
     唤醒后语音
     """
     text = ['我在，请说', '您好，请说', '主人，有什么吩咐？']
-
-    pygame.mixer.init()
-    pygame.mixer.music.load('source/music/awaken.mp3')
-    pygame.mixer.music.play()
-
-    while pygame.mixer.music.get_busy():
-       pygame.time.Clock().tick(10)
-
     text = text[random.randint(0, len(text)-1)]
+
+    music('source/music/wakeup.mp3')
     speak(text)
+
     return text
 
-def close_callback():
+def sleep_callback():
     """
     关闭唤醒后语音
     """
+    music('source/music/sleep.mp3')
+    return
+
+def music(path):
+    """
+    播放音乐
+    """
     pygame.mixer.init()
-    pygame.mixer.music.load('source/music/close.mp3')
+    pygame.mixer.music.load(path)
     pygame.mixer.music.play()
 
     while pygame.mixer.music.get_busy():
        pygame.time.Clock().tick(10)
-
-    return True
+    
+    return

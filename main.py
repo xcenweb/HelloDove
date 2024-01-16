@@ -6,11 +6,7 @@ from util import voice
 from util import listen
 from util import processor
 
-# devices = sounddevice.query_devices()
-# default_input_device_idx = sounddevice.default.device[0]
-# print(devices)
-# print(f'Use default device: {devices[default_input_device_idx]["name"]}')\
-
+# 启动
 recognizer = listen.create_recognizer()
 sample_rate = recognizer.sample_rate
 duration = 0.8
@@ -18,14 +14,13 @@ audio_queue = queue.Queue()
 audio_thread = threading.Thread(target=listen.audio_capture, args=(audio_queue, sample_rate, duration))
 audio_thread.start()
 
-#-初始化参数-#
+# 初始化变量
 wakeup_status = False
 wakeup_time = 0
 callback_ststus = False
 callback_time = 0
 recognizer_dict = {}
 commond_list = []
-#-#-#-#-#-#-# 
 
 while True:
     if not audio_queue.empty():
@@ -68,7 +63,7 @@ while True:
                     callback_ststus = True
                 else:
                     wakeup_status = False
-                    voice.close_callback()
+                    voice.sleep_callback()
             else:
                 if len(recognizer.text) != 0:
                     commond_list.append(recognizer.text)

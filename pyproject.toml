@@ -2,7 +2,7 @@
 name = "hellodove"
 version = "0.1.0"
 description = "语音助手"
-authors = ["一只咕鸽 <xcenweb@qq.com>"]
+authors = ["一只咕鸽 <xcenweb@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
